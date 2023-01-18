@@ -31,7 +31,7 @@ jobs:
         run: |
           forge --version
           forge build --sizes
-
+          
       - name: "Generate types"
         run: "yarn generatetypes"
 

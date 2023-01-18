@@ -15,5 +15,6 @@ async function main() {
     outDir: 'src',
     target: 'ethers-v5',
   })
+  console.log(await result)
 }
 main().catch(console.error)
