@@ -30,8 +30,8 @@ jobs:
       - name: "Build the contracts"
         run: |
           forge --version
-          forge build --sizes
-          
+          forge build -c  ./lib/mento-core/contracts --sizes
+
       - name: "Generate types"
         run: "yarn generatetypes"
 
