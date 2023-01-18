@@ -27,7 +27,7 @@ yarn
 forge install
 
 # Compile the mento-core dependency contracts with forge
-forge forge build -c  ./lib/mento-core/contracts
+forge forge build -c ./lib/mento-core/contracts
 
 # Generate types
 yarn generatetypes

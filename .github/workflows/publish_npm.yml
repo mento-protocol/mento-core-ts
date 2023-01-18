@@ -1,6 +1,6 @@
 name: "publish npm package"
 
-on: [push]
+on: [workflow_dispatch]
 
 jobs:
   release:
@@ -30,7 +30,7 @@ jobs:
       - name: "Build the contracts"
         run: |
           forge --version
-          forge build -c  ./lib/mento-core/contracts --sizes
+          forge build -c ./lib/mento-core/contracts --sizes
 
       - name: "Generate types"
         run: "yarn generatetypes"
