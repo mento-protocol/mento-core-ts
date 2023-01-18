@@ -1,0 +1,2 @@
+celo-foundry/=lib/celo-foundry/src/
+mento-core/=lib/mento-core/

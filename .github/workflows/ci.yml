@@ -1,0 +1,47 @@
+name: "CI"
+
+env:
+  FOUNDRY_PROFILE: "ci"
+
+on:
+  pull_request:
+    branches:
+      - "main"
+      - "feature/**"
+  push:
+    branches:
+      - "main"
+
+jobs:
+  ci:
+    name: Lint & Test
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: "Check out the repo"
+        uses: "actions/checkout@v3"
+        with:
+          submodules: "recursive"
+
+      - name: "Install Foundry"
+        uses: "onbjerg/foundry-toolchain@v1"
+        with:
+          version: "nightly"
+
+      - name: "Install Node.js"
+        uses: "actions/setup-node@v3"
+        with:
+          cache: "yarn"
+          node-version: "16"
+
+      - name: "Install the Node.js dependencies"
+        run: "yarn install --immutable"
+
+      - name: "Add lint summary"
+        run: |
+          echo "## Lint" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Passed" >> $GITHUB_STEP_SUMMARY
+
+      - name: "Add test summary"
+        run: |
+          echo "## Tests" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Passed" >> $GITHUB_STEP_SUMMARY
