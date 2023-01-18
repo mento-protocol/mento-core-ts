@@ -7,7 +7,7 @@ async function main() {
 
   let files = await fs.readdirSync(interfacesPath)
   files = files.map(file => { return file + "/" + file.replace("sol", "json") })
-  const allFiles = glob(cwd + "/lib/mento-core/out", files)
+  const allFiles = glob(cwd + "/out", files)
   const result = runTypeChain({
     cwd,
     filesToProcess: allFiles,
