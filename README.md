@@ -1,6 +1,6 @@
 # Mento Core TS
 
-This repo contains the source code of the Mento core contracts type generation and NPM package deployment.
+This package provides auto-generated typescript types and ethers.js factories for interacting with the Mento Protocol
 
 ## What is Mento?
 
@@ -27,7 +27,7 @@ yarn
 forge install
 
 # Compile the mento-core dependency contracts with forge
-forge forge build -c ./lib/mento-core/contracts
+forge build
 
 # Generate types
 yarn generatetypes

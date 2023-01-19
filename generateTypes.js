@@ -1,19 +1,21 @@
-const { runTypeChain, glob } = require('typechain')
-const fs = require('fs');
+const { runTypeChain, glob } = require("typechain");
+const fs = require("fs");
 
 async function main() {
-  let cwd = process.cwd()
-  const interfacesPath = cwd + "/lib/mento-core/contracts/interfaces"
+  let cwd = process.cwd();
+  const interfacesPath = cwd + "/lib/mento-core/contracts/interfaces";
 
-  let files = await fs.readdirSync(interfacesPath)
-  files = files.map(file => { return file + "/" + file.replace("sol", "json") })
-  const allFiles = glob(cwd + "/out", files)
+  let files = await fs.readdirSync(interfacesPath);
+  files = files.map(file => {
+    return file + "/" + file.replace("sol", "json");
+  });
+  const allFiles = glob(cwd + "/out", files);
   const result = runTypeChain({
     cwd,
     filesToProcess: allFiles,
     allFiles,
-    outDir: 'src',
-    target: 'ethers-v5',
-  })
+    outDir: "src",
+    target: "ethers-v5",
+  });
 }
-main().catch(console.error)
+main().catch(console.error);
