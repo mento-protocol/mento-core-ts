@@ -31,4 +31,7 @@ forge build
 
 # Generate types
 yarn generatetypes
+
+# Build the types
+yarn build
 ```
