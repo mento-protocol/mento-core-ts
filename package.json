@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mento-protocol/mento-core"
+    "url": "git+https://github.com/mento-protocol/mento-core-ts"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.0.3",
