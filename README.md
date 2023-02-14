@@ -18,7 +18,7 @@ The Mento protocol is a smart contract platform built on the Celo blockchain tha
 git clone git@github.com:mento-protocol/mento-core-ts.git
 
 # Change directory to the the newly cloned repo
-cd mento-tooling
+cd mento-core-ts
 
 # Install dev dependencies with yarn
 yarn
