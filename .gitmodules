@@ -1,7 +1,3 @@
-[submodule "lib/mento-core"]
-	path = lib/mento-core
-	url = https://github.com/mento-protocol/mento-core
-	branch = 8b837b715adbca86ec73c98bf4228e025778b290
 [submodule "lib/celo-foundry"]
 	path = lib/celo-foundry
 	url = https://github.com/bowd/celo-foundry
