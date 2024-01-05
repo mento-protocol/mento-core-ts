@@ -3,8 +3,6 @@ src = "lib/mento-core/contracts"
 out = "out"
 test = "test"
 libs = ["lib"]
-auto_detect_solc = false
-solc = "0.5.17"
+auto_detect_solc = true
 legacy = true
-
-
+via_ir = true
