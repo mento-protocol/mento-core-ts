@@ -1,8 +1,8 @@
 {
   "name": "@mento-protocol/mento-core-ts",
-  "description": "Mento type generation and npm package dployment repo",
+  "description": "Mento type generation and npm package deployment repo",
   "license": "GPL-3.0-or-later",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "files": [
     "dist",
     "contracts",
