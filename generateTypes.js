@@ -6,12 +6,14 @@ async function main() {
   const interfaces = fs.readdirSync(`${cwd}/lib/mento-core/contracts/interfaces`);
 
   const governanceContracts = fs.readdirSync(`${cwd}/lib/mento-core/contracts/governance`);
+  const lockingContracts = fs.readdirSync(`${cwd}/lib/mento-core/contracts/governance/locking`);
   const oracleContracts = fs.readdirSync(`${cwd}/lib/mento-core/contracts/oracles`);
   const breakerContracts = fs.readdirSync(`${cwd}/lib/mento-core/contracts/oracles/breakers`);
   const swapContracts = fs.readdirSync(`${cwd}/lib/mento-core/contracts/swap`);
 
   const allContracts = interfaces
     .concat(governanceContracts)
+    .concat(lockingContracts)
     .concat(oracleContracts)
     .concat(breakerContracts)
     .concat(swapContracts);
