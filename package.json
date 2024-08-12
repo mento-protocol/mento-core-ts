@@ -2,7 +2,7 @@
   "name": "@mento-protocol/mento-core-ts",
   "description": "Mento type generation and npm package deployment repo",
   "license": "GPL-3.0-or-later",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "files": [
     "dist",
     "contracts",
@@ -44,9 +44,7 @@
   "scripts": {
     "lint": "yarn prettier",
     "lint:check": "yarn prettier:check",
-    "postinstall": "husky install",
-    "prepack": "pinst --disable",
-    "postpack": "pinst --enable",
+    "prepare": "husky install",
     "prettier": "prettier --config \"./.prettierrc.yml\" --write \"**/*.{json,md,js,yml}\"",
     "prettier:check": "prettier --config \"./.prettierrc.yml\" --check \"**/*.{json,md,js,yml}\"",
     "generatetypes": "node generateTypes.js",
