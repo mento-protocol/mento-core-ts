@@ -1,0 +1,11 @@
+{
+  "lib/celo-foundry": {
+    "rev": "aba8615646acc8c3f3cc83cf13eab1795600c388"
+  },
+  "lib/mento-core": {
+    "tag": {
+      "name": "v2.6.5",
+      "rev": "4ce201f85b3230b1db0afa45296f3b3d6ce9e2d2"
+    }
+  }
+}

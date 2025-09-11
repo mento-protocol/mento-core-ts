@@ -19,7 +19,10 @@ async function main() {
     .concat(swapContracts);
   const allContractsPath = allContracts.map(contract => `${contract}/${contract.replace(".sol", ".json")}`);
 
-  const allFiles = glob(`${cwd}/out`, allContractsPath);
+  /// XXX: there's an IBreakerBox in the @celo/contracts package as well so we need a manual shady intervention.
+  fs.cpSync(`${cwd}/out/IBreakerBox.sol/IBreakerBox.0.5.17.json`, `${cwd}/out/IBreakerBox.sol/IBreakerBox.json`);
+
+  const allFiles = glob(`${cwd}/out`, allContractsPath)
   await runTypeChain({
     cwd,
     filesToProcess: allFiles,

@@ -5,4 +5,3 @@ test = "test"
 libs = ["lib"]
 auto_detect_solc = true
 legacy = true
-via_ir = true

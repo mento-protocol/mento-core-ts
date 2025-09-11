@@ -18,3 +18,7 @@
 .tool-versions
 yarn-debug.log*
 yarn-error.log*
+
+# build files
+src/
+dist/
