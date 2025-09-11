@@ -1,15 +1,25 @@
 const { runTypeChain, glob } = require("typechain");
 const fs = require("fs");
+const path = require("path");
+const cwd = process.cwd();
+const execSync = require("child_process").execSync
+
+function readPath(path) {
+  const fullPath = `${cwd}/${path}`
+  return fs.readdirSync(fullPath).map(c => `${fullPath}/${c}`).filter(c => {
+    const stat = fs.statSync(c)
+    return stat.isFile() && (c.endsWith(".sol") || c.endsWith(".json"))
+  })
+}
 
 async function main() {
-  const cwd = process.cwd();
-  const interfaces = fs.readdirSync(`${cwd}/lib/mento-core/contracts/interfaces`);
+  const interfaces = readPath("lib/mento-core/contracts/interfaces")
 
-  const governanceContracts = fs.readdirSync(`${cwd}/lib/mento-core/contracts/governance`);
-  const lockingContracts = fs.readdirSync(`${cwd}/lib/mento-core/contracts/governance/locking`);
-  const oracleContracts = fs.readdirSync(`${cwd}/lib/mento-core/contracts/oracles`);
-  const breakerContracts = fs.readdirSync(`${cwd}/lib/mento-core/contracts/oracles/breakers`);
-  const swapContracts = fs.readdirSync(`${cwd}/lib/mento-core/contracts/swap`);
+  const governanceContracts = readPath("lib/mento-core/contracts/governance");
+  const lockingContracts = readPath("lib/mento-core/contracts/governance/locking");
+  const oracleContracts = readPath(`lib/mento-core/contracts/oracles`);
+  const breakerContracts = readPath(`lib/mento-core/contracts/oracles/breakers`);
+  const swapContracts = readPath(`lib/mento-core/contracts/swap`);
 
   const allContracts = interfaces
     .concat(governanceContracts)
@@ -17,16 +27,19 @@ async function main() {
     .concat(oracleContracts)
     .concat(breakerContracts)
     .concat(swapContracts);
-  const allContractsPath = allContracts.map(contract => `${contract}/${contract.replace(".sol", ".json")}`);
 
-  /// XXX: there's an IBreakerBox in the @celo/contracts package as well so we need a manual shady intervention.
-  fs.cpSync(`${cwd}/out/IBreakerBox.sol/IBreakerBox.0.5.17.json`, `${cwd}/out/IBreakerBox.sol/IBreakerBox.json`);
+  allContracts.forEach((contract) => {
+    const name = path.basename(contract)
+    const abiFilename = name.replace(".sol", ".json")
+    execSync(`forge inspect ${contract}:${name.replace(".sol", "")} abi --json > abis/${abiFilename}`)
+  })
 
-  const allFiles = glob(`${cwd}/out`, allContractsPath)
+  const abis = readPath("abis")
+
   await runTypeChain({
     cwd,
-    filesToProcess: allFiles,
-    allFiles,
+    filesToProcess: abis,
+    allFiles: abis,
     outDir: "src",
     target: "ethers-v5",
   });
