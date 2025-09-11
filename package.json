@@ -2,7 +2,7 @@
   "name": "@mento-protocol/mento-core-ts",
   "description": "Mento type generation and npm package deployment repo",
   "license": "GPL-3.0-or-later",
-  "version": "2.6.5-rc2",
+  "version": "2.6.5-rc3",
   "files": [
     "dist",
     "contracts",
